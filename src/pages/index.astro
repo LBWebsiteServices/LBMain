@@ -1,17 +1,47 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
 ---
+<Layout title="Buffalo & WNY Web Design">
+    <section class="hero">
+        <!-- Background Video -->
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="/BuffaloLooped.mp4" type="video/mp4">
+        </video>
+        <!-- Dark overlay so text is readable -->
+        <div class="hero-overlay"></div>
+        
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <h1>Shine bright, locally.</h1>
+            <p>We help Buffalo and Upstate Western NY businesses turn clicks into customers with stunning, high-converting websites.</p>
+            <div class="hero-buttons">
+                <a href="/pricing" class="btn btn-primary">Get Started</a>
+                <a href="/demo" class="btn btn-outline">Have a demo code?</a>
+            </div>
+            <div class="hero-badges">
+                Helping WNY small businesses stand out and grow online.
+            </div>
+        </div>
+    </section>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+    <section class="section" id="services">
+        <h2>How We Help You Grow</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>For Local Businesses</h3>
+                <p>Find more customers and phone calls through our website. Let locals find you first.</p>
+                <a href="mailto:LBWebsiteServices@gmail.com" class="btn btn-primary">Contact us!</a>
+            </div>
+            <div class="card">
+                <h3>For Demos</h3>
+                <p>Have you been reached out to by us and have received a Demo Code? Click here to view!</p>
+                <a href="/demo" class="btn btn-outline">View Demos</a>
+            </div>
+             <div class="card">
+                <h3>Pricing</h3>
+                <p>Do you want to learn more about our pricing? Our affordable prices will help you satisfy your own needs.</p>
+                <a href="/pricing" class="btn btn-outline">View Pricing</a>
+            </div>
+        </div>
+    </section>
+</Layout>

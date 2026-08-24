@@ -1,0 +1,49 @@
+---
+---
+<nav>
+    <div class="logo">LB<span>Website Services</span></div>
+
+    <div class="nav-links" id="nav-links">
+        <a href="/">Home</a>
+        <a href="/about">About Us</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/demo">Demo</a>
+        <a href="mailto:LBWebsiteServices@gmail.com" class="btn btn-primary nav-mobile-btn">Book a Demo</a>
+    </div>
+
+    <a href="mailto:LBWebsiteServices@gmail.com" class="btn btn-primary desktop-only">Book a Demo</a>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <div class="nav-overlay" id="nav-overlay"></div>
+</nav>
+
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    const overlay = document.getElementById('nav-overlay');
+
+    function closeMenu() {
+        navLinks?.classList.remove('open');
+        overlay?.classList.remove('open');
+        hamburger?.classList.remove('active');
+        hamburger?.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('menu-open');
+    }
+
+    function toggleMenu() {
+        const isOpen = navLinks?.classList.toggle('open');
+        overlay?.classList.toggle('open');
+        hamburger?.classList.toggle('active');
+        hamburger?.setAttribute('aria-expanded', String(!!isOpen));
+        document.body.classList.toggle('menu-open', !!isOpen);
+    }
+
+    hamburger?.addEventListener('click', toggleMenu);
+    overlay?.addEventListener('click', closeMenu);
+    navLinks?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+</script>

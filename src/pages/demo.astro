@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="View a Demo">
+    <section class="section demo-section">
+        <h2>Have a Demo Code?</h2>
+        <p class="demo-subtext">Enter the code we gave you to view your custom demo site.</p>
+        <form id="demo-form" class="demo-form">
+            <input
+                type="text"
+                id="demo-code"
+                name="demo-code"
+                placeholder="Enter demo code"
+                autocomplete="off"
+                required
+            />
+            <button type="submit" class="btn btn-primary">View Demo</button>
+        </form>
+        <p id="demo-error" class="demo-error"></p>
+    </section>
+</Layout>
+
+<script>
+    // TEMP: hardcoded code -> demo URL lookup.
+    // Swap this for a real D1/Supabase lookup once the backend is live.
+    const demoMap: Record<string, string> = {
+        // "ABC123": "/demos/example-restaurant",
+    };
+
+    const form = document.getElementById('demo-form') as HTMLFormElement;
+    const input = document.getElementById('demo-code') as HTMLInputElement;
+    const errorEl = document.getElementById('demo-error') as HTMLParagraphElement;
+
+    form?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const code = input.value.trim().toUpperCase();
+        const destination = demoMap[code];
+
+        if (destination) {
+            errorEl.textContent = '';
+            window.location.href = destination;
+        } else {
+            errorEl.textContent = "We couldn't find a demo for that code. Double-check it and try again.";
+        }
+    });
+</script>
