@@ -159,38 +159,53 @@ nav {
     justify-content: center;
 }
 
-/* The Background Video */
-.hero-video {
+/* Image Slider */
+.hero-slider {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* This makes it stretch left-to-right perfectly */
     z-index: 1;
 }
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover; /* Stretches image to cover the whole screen */
+    background-position: center; /* Keeps the image centered */
+    background-repeat: no-repeat; /* NEW: Stops the image from repeating/tiling */
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
 
-/* The dark tint over the video */
+.slide.active {
+    opacity: 1;
+}
+
+/* The dark tint over the images */
 .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.45); /* Adjust 0.45 to make it darker or lighter */
+    background: rgba(0, 0, 0, 0.45); 
     z-index: 2;
 }
 
 /* The text and buttons */
 .hero-content {
     position: relative;
-    z-index: 3; /* Puts text on top of the video and overlay */
+    z-index: 3; 
     max-width: 800px;
     margin: 0 auto;
 }
 .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; color: var(--white); }
 .hero p { font-size: 1.2rem; max-width: 600px; margin: 0 auto 2rem; color: rgba(255, 255, 255, 0.9); }
-.hero-badges { margin-top: 2rem; font-size: 0.9rem; color: rgb(238, 241, 239); text-transform: uppercase; letter-spacing: 1px; font-weight: bold;}
+.hero-badges { margin-top: 2rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.8); text-transform: uppercase; letter-spacing: 1px; }
 .hero-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
 
 /* General Section Styling */

@@ -3,10 +3,14 @@ import Layout from '../layouts/Layout.astro';
 ---
 <Layout title="Buffalo & WNY Web Design">
     <section class="hero">
-        <!-- Background Video -->
-        <video class="hero-video" autoplay muted loop playsinline>
-            <source src="/BuffaloLooped.mp4" type="video/mp4">
-        </video>
+        <!-- Image Slider -->
+        <div class="hero-slider">
+            <div class="slide active" style="background-image: url('/Img6.jpg');"></div>
+            <div class="slide" style="background-image: url('/Img1.jpeg');"></div>
+            <div class="slide" style="background-image: url('/Img3.jpeg');"></div>
+            <div class="slide" style="background-image: url('/Img5.jpg');"></div>
+        </div>
+        
         <!-- Dark overlay so text is readable -->
         <div class="hero-overlay"></div>
         
@@ -45,3 +49,21 @@ import Layout from '../layouts/Layout.astro';
         </div>
     </section>
 </Layout>
+
+<script is:inline>
+    const slides = document.querySelectorAll('.hero-slider .slide');
+    let currentSlide = 0;
+    
+    if (slides.length > 0) {
+        setInterval(() => {
+            // Remove active class from current slide
+            slides[currentSlide].classList.remove('active');
+            
+            // Move to next slide, loop back to 0 if at the end
+            currentSlide = (currentSlide + 1) % slides.length;
+            
+            // Add active class to the new slide
+            slides[currentSlide].classList.add('active');
+        }, 5000); // 5000 = 5 seconds per image
+    }
+</script>
